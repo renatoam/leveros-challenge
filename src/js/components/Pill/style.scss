@@ -1,0 +1,42 @@
+@import '../../../css/mixins';
+
+.pill {
+  background-color: $primary-color;
+  border-radius: 10px;
+  cursor: pointer;
+  max-height: 60px;
+  margin: 20px;
+  overflow: hidden;
+  padding: 2px 20px;
+  
+  @include transition(max-height);
+
+  &:hover {
+    max-height: 150px;
+  }
+
+  h3 {
+    font-size: 1rem;
+    text-shadow: none;
+  }
+
+  &__information {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  &__info {
+    font-size: .8rem;
+    padding: 15px;
+    width: 50%;
+
+    &:nth-child(-n + 2) {
+      border-bottom: 1px solid rgba(255, 255, 255, .5);
+    }
+
+    &--value {
+      font-weight: 100;
+      text-align: right;
+    }
+  }
+}

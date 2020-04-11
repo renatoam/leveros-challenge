@@ -1,0 +1,8 @@
+@import './../../../css/mixins';
+
+.characters {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding-bottom: 80px;
+}

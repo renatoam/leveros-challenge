@@ -1,0 +1,177 @@
+@import './../../../css/mixins';
+
+.menu {
+  background-color: $primary-color;
+  bottom: 0;
+  height: 80px;
+  max-width: 100vw;
+  position: fixed;
+  width: 100%;
+
+  @include transition(bottom, height);
+
+  @include mq('all-mob') {
+    bottom: calc((-100%) + 50px);
+    height: 100vh;
+
+    &.active {
+      bottom: 0;
+
+      .menu__group {
+        bottom: 10vw;
+        height: auto;
+        justify-content: center;
+        position: absolute;
+
+        img {
+          display: none;
+        }
+      }
+
+      .menu__toggle {    
+        &::before {
+          transform: rotate(50deg);
+        }
+
+        &::after {
+          transform: rotate(-50deg);
+        }    
+      }
+    }
+  }
+
+  &__wrapper {
+    height: 100%;
+    position: relative;
+  }
+
+  &__group {
+    align-items: center;
+    display: flex;
+    height: 50px;
+    justify-content: space-between;
+    width: 100%;
+
+    img {
+      height: 30px;
+      margin-right: 15px;
+    }
+
+    @include mq('all-desk') {
+      display: none;
+    }
+  }
+
+  #menuToggle {
+    display: none;
+
+    &:checked {
+      + .menu__toggle {
+        &::before,
+        &::after,
+        span {
+          left: calc(50% - 25px);
+          top: 50%;
+        }
+
+        &::before {
+          transform: rotate(50deg);
+        }
+    
+        &::after {
+          transform: rotate(-50deg);
+        }
+  
+        span {
+          opacity: 0;
+        }
+      }
+    }
+  }
+
+  &__toggle {
+    align-items: center;
+    display: flex;
+    height: 50px;
+    justify-content: flex-end;
+    position: relative;
+
+    &::before,
+    &::after {
+      background-color: #FFFFFF;
+      height: 2px;
+      top: 10px;
+      transform: translateY(-50%);
+      width: 50px;
+
+      @include pseudo();
+      @include transition(transform);
+    }
+
+    &::before {
+      top: calc(50% - 10px);
+    }
+
+    &::after {
+      top: calc(50% + 10px);
+    }
+
+    &::before,
+    &::after,
+    span {
+      left: 40px;
+      transform: translate(-50%, -50%);
+    }
+
+    span {
+      display: block;
+      background-color: #FFF;
+      height: 2px;
+      position: absolute;
+      top: 50%;
+      width: 50px;
+    }
+  }
+
+  &__list {
+    align-items: center;
+    height: 100%;
+    justify-content: center;
+
+    @include mq('all-mob') {
+      flex-direction: column;
+      padding: 0 10vw;
+    }
+  }
+
+  &__item {
+    height: 100%;
+    width: 200px;
+
+    @include mq('all-mob') {
+      border-bottom: 1px solid rgba($color: #FFF, $alpha: .3);
+      height: 20vw;
+      width: 100%;
+    }
+  }
+
+  &__link {
+    align-items: center;
+    color: #FFFFFF;
+    display: flex;
+    font-size: 1.42rem;
+    font-weight: bold;
+    height: 100%;
+    justify-content: center;
+
+    @include transition(background-color);
+
+    @include mq('all-mob') {
+      font-size: 5vw;
+    }
+
+    &:hover {
+      background-color: $primary-color-hover;
+    }
+  }
+}

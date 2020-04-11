@@ -1,0 +1,18 @@
+@import '../../../css/mixins';
+
+h1 {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  margin: auto;
+  margin-bottom: 25px;
+  padding-top: 25px;
+
+  @include mq('all-mob') {
+    width: 70vw;
+
+    img {
+      width: 100%;
+    }
+  }
+}
